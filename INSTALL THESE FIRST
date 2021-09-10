@@ -1,0 +1,9 @@
+
+# Install turtle (Drawing program)
+
+>>> pip install PythonTurtle
+
+
+# Install Tkinter (Information GUI program)
+
+>>> pip insall tk
