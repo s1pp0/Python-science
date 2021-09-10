@@ -6,20 +6,16 @@ from turtle import *
 root = Tk()
 
 root.geometry("400x300")
-root.title("ALKANSERIE uträknare / målare")
+root.title("ALKANSERIE utr�knare / m�lare")
 root.resizable(0, 0)
-root.iconbitmap("atom.ico")
 
-bg = PhotoImage(file="myOWN.png")
-
-my_canvas = Canvas(root, width=600, height=600)
-my_canvas.pack(fill="both", expand=True)
-my_canvas.create_image(0, 0, image=bg, anchor="nw")
+root.configure(bg="white")
 
 
 
 
-def hej(*args):
+
+def main_func(*args):
     
     root.destroy()
     turtle = Turtle()
@@ -40,17 +36,12 @@ def hej(*args):
 
 
 
-    c = (coal_list[int(current_value.get()) - 1], "C", int(current_value.get()), "H", int(current_value.get()) * 2 + 2)
+    alkan_name = (coal_list[int(current_value.get()) - 1], "C", int(current_value.get()), "H", int(current_value.get()) * 2 + 2)
 
     
 
-    turtle.screen.title(c)
+    turtle.screen.title(alkan_name)
 
-
-    
-
-    kol = "black"
-    vate = "white"
 
     
     
@@ -103,11 +94,10 @@ def hej(*args):
 
     value = int(current_value.get())
     
-    vat = value * 2 + 2
 
-    rig = value - 1
+    loop_times = value - 1
     
-    for x in range(rig):
+    for x in range(loop_times):
     
         fillcolor("black")
         begin_fill()
@@ -142,14 +132,14 @@ def hej(*args):
             
     turtle.getscreen()._root.mainloop()
 
-name = Label(root, text="Samuel Maniscalchi Bäckmans", font=('Times New roman', 20), bg="#FFFFFF")
+name = Label(root, text="Samuel Maniscalchi B�ckmans", font=('Times New roman', 20), bg="#FFFFFF")
 name.place(x = 20, y = 20)
 
-alkan = Label(root, text="Alkanserie-uträknare-målare", font=('Times New roman', 15), bg="#FFFFFF")
+alkan = Label(root, text="Alkanserie-utr�knare-m�lare", font=('Times New roman', 15), bg="#FFFFFF")
 alkan.place(x = 75, y = 60)
 
-lbl = Label(root, text="Ange antalet kolatomer:", font=('Helvetica', 12), bg="#FFFFFF")
-lbl.place(x = 10, y = 230)
+atoms_lbl = Label(root, text="Ange antalet kolatomer:", font=('Helvetica', 12), bg="#FFFFFF")
+atoms_lbl.place(x = 10, y = 230)
 
 
 current_value = StringVar(value=0)
@@ -159,10 +149,11 @@ enter.place(x = 10, y = 260)
 
 
 
-submit = Button(root, text="Kör!", width="6", command=hej)
+submit = Button(root, text="K�r!", width="4", command=main_func)
 submit.place(x = 335, y = 260)
 
 
 root.mainloop()
+
 
 
