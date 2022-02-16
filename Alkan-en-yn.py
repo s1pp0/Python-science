@@ -3,12 +3,10 @@
 from tkinter import *
 from turtle import *
 
-from tkinter import font
-from tkinter import messagebox
 root = Tk()
 
 root.geometry("400x300")
-root.title("ALKANSERIE uträknare / målare")
+root.title("Kolväte uträknare / målare  - 2021, 8an")
 root.resizable(False, False)
 root.iconbitmap("atom.ico")
 
@@ -18,13 +16,13 @@ my_canvas = Canvas(root, width=600, height=600)
 my_canvas.pack(fill="both", expand=True)
 my_canvas.create_image(0, 0, image=bg, anchor="nw")
 
-alkan_list = ["Metan:", "Etan:", "Propan:", "Butan:", "Pentan:", "Hexan:", "Heptan:", "Oktan:", "Nonan:", "Dekan:", "Undekan:", "Dodekan:", "Tridikan:"]
+alkan_list = ["Metan:", "Etan:", "Propan:", "Butan:", "Pentan:", "Hexan:", "Heptan:", "Oktan:", "Nonan:", "Dekan:", "Undekan:", "Dodekan:", "Tridikan:", "Tetradekan:", "Pentadekan:", "Hexadekan:", "Heptadekan", "Oktadekan:", "Nonadekan:", "Eikosan:"]
 
-alken_list = ["Eten:", "Propen:", "Buten:", "Penten:", "Hexen:", "Hepten:", "Okten:", "Nonen:", "Deken:", "Undeken:", "Dodeken:", "Tridiken:"]
+alken_list = ["Eten:", "Propen:", "Buten:", "Penten:", "Hexen:", "Hepten:", "Okten:", "Nonen:", "Deken:", "Undeken:", "Dodeken:", "Tridiken:", "Tetradeken:", "Pentadeken:", "Hexadeken:", "Heptedeken:", "Oktadeken:", "Nonadeken:", "Eikosen:"]
 
-alkyn_list = ["Etyn:", "Propyn:", "Butyn:", "Pentyn:", "Hexyn:", "Heptyn:", "Oktyn:", "Nonyn:", "Dekyn:", "Undekyn:", "Dodekyn:", "Tridikyn:"]
+alkyn_list = ["Etyn:", "Propyn:", "Butyn:", "Pentyn:", "Hexyn:", "Heptyn:", "Oktyn:", "Nonyn:", "Dekyn:", "Undekyn:", "Dodekyn:", "Tridikyn:", "Tetradekyn:", "Pentadekyn:", "Hexadekyn:", "Heptadekyn:", "Oktadekyn:", "Nonadekyn:", "Eikosyn:"]
 
-def hej(*args):
+def main_func():
     
     root.destroy()
     turtle = Turtle()
@@ -40,26 +38,17 @@ def hej(*args):
     turtle.screen.setup(width, height)
 
     if choosed.get() == "1. Alkanserien":
+
+        if int(current_value.get()) > len(alkan_list):
+            screen_name = ("Okänd:", "C", int(current_value.get()), "H", int(current_value.get()) * 2 + 2)
         
-      
-
-        c = (alkan_list[int(current_value.get()) - 1], "C", int(current_value.get()), "H", int(current_value.get()) * 2 + 2)
-
-        turtle.screen.title(c)
+        else:
+            screen_name = (alkan_list[int(current_value.get()) - 1], "C", int(current_value.get()), "H", int(current_value.get()) * 2 + 2)
 
 
-        # FIXA SÅ ATT NAMNET DYKER UPP MITTEN HÖGST UPP!
-        #
-        # style = ('Arial', 30, 'italic')
-        # turtle.write(alkan_list[int(current_value.get()) - 1], font=style, align='center')
+        turtle.screen.title(screen_name)
 
-
-
-        kol = "black"
-        vate = "white"
-
-        
-        
+                
             
         forward(-350)
 
@@ -144,12 +133,21 @@ def hej(*args):
             right(90)
             
             forward(-15)
+        
 
                 
     elif choosed.get() == "2. Alkenserien":
-    
 
-        screen_name = (alken_list[int(current_value.get()) - 2], "C", int(current_value.get()), "H", int(current_value.get()) * 2 + 2)
+        
+        if int(current_value.get()) > len(alken_list) + 1:
+            screen_name = ("Okänd:", "C", int(current_value.get()), "H", int(current_value.get()) * 2 + 2)
+        else:
+                
+
+            screen_name = (alken_list[int(current_value.get()) - 2], "C", int(current_value.get()), "H", int(current_value.get()) * 2)
+        
+
+        
 
         turtle.screen.title(screen_name)
 
@@ -202,6 +200,7 @@ def hej(*args):
         end_fill()
 
         forward(-40)
+
         if int(current_value.get()) <= 2:
                 
             fillcolor("white")
@@ -210,10 +209,12 @@ def hej(*args):
             end_fill()
         
         forward(80)
-        fillcolor("white")
-        begin_fill()
-        circle(15)
-        end_fill()
+        if int(current_value.get()) <= 2:
+                
+            fillcolor("white")
+            begin_fill()
+            circle(15)
+            end_fill()
         
         forward(-40)
         
@@ -224,7 +225,7 @@ def hej(*args):
         rig = value - 1
 
         if rig == 1:
-            rig = 0
+            rig = 0 
 
         for x in range(rig):
         
@@ -267,10 +268,15 @@ def hej(*args):
             forward(-15)
 
 
-       
+
     elif choosed.get() == "3. Alkynserien":
+
+        if int(current_value.get()) > len(alkyn_list) + 1:
+            screen_name = ("Okänd:", "C", int(current_value.get()), "H", int(current_value.get()) * 2 + 2)
         
-        screen_name = (alkyn_list[int(current_value.get()) - 2], "C", int(current_value.get()), "H", int(current_value.get()) * 2 + 2)
+        else:   
+                
+            screen_name = (alkyn_list[int(current_value.get()) - 2], "C", int(current_value.get()), "H", int(current_value.get()) * 2 - 2)
 
         turtle.screen.title(screen_name)
 
@@ -354,14 +360,20 @@ def hej(*args):
                     circle(15)
                     end_fill()
             
-            value =+1
+            
             
             forward(80)
-            fillcolor("white")
-            begin_fill()
-            circle(15)
-            end_fill()
-
+            if value >= 3:
+                    
+                    circle(15)
+            else:
+            
+                    fillcolor("white")
+                    begin_fill()
+                    circle(15)
+                    end_fill()
+            value =+1
+            
             forward(-25)
             right(-90)
             forward(55)
@@ -383,10 +395,11 @@ def hej(*args):
     
     turtle.getscreen()._root.mainloop()
 
+
 name = Label(root, text="Samuel Maniscalchi Bäckmans", font=('Times New roman', 20), bg="#FFFFFF")
 name.place(x = 20, y = 20)
 
-alkan = Label(root, text="Alkanserie-uträknare-målare", font=('Times New roman', 15), bg="#FFFFFF")
+alkan = Label(root, text="Kolväte-uträknare-målare", font=('Times New roman', 15), bg="#FFFFFF")
 alkan.place(x = 75, y = 60)
 
 
@@ -400,7 +413,7 @@ choosed = StringVar()
 choosed.set("1. Alkanserien")
 
 alternativ = OptionMenu(root, choosed, *alter_list)
-alternativ.configure(bg="white", font=('Helvetica', 11), highlightbackground="white")
+alternativ.configure(font=('Helvetica', 11))
 alternativ.place(x = 10, y = 150)
 
 
@@ -418,8 +431,10 @@ enter.place(x = 10, y = 260)
 
 
 
-submit = Button(root, text="Kör!", width="6", command=hej)
+submit = Button(root, text="Kör!", width="6", command=main_func)
 submit.place(x = 335, y = 260)
 
 
 root.mainloop()
+
+
